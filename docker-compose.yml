@@ -1,5 +1,12 @@
 ---
-version: '2.1'
+version: '2.2'
 services:
   zoo:
     image: zookeeper
+  app:
+    build: .
+    depends_on:
+      - zoo
+    environment:
+      ZK_HOSTS: zoo
+    scale: 10
