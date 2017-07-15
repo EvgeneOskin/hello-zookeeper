@@ -1,0 +1,5 @@
+[packages]
+kazoo = ">= 2.4.0"
+
+[dev-packages]
+docker-compose = "*"
