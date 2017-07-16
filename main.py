@@ -28,9 +28,10 @@ if lease:
 class LeaderElection(object):
 
     def __init__(self):
-        self.identity = bytes(uuid.uuid4().hex , encoding='utf')
+        self.identity = bytes(uuid.uuid4().hex, encoding='utf')
         self.leader = None
         self.election = None
+
     @property
     def is_leader(self):
         return self.leader == self.identity
@@ -59,9 +60,9 @@ class LeaderElection(object):
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def welcome():
-    global is_leader
     return jsonify(
         title='Hello',
         leader=election.leader and str(election.leader, encoding='utf'),
@@ -71,6 +72,5 @@ def welcome():
 
 election = LeaderElection()
 gevent.spawn(election.run_elect)
-
 http_server = WSGIServer(('', 5000), app)
 http_server.serve_forever()

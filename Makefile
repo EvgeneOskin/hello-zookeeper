@@ -4,4 +4,4 @@ build:
 
 .PHONY: up
 up:
-	docker-compose up -d
+	docker-compose up -d app1 app2 app3

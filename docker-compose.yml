@@ -3,11 +3,25 @@ version: '2.2'
 services:
   zoo:
     image: zookeeper
-  app:
+  base_app:
     build: .
-    depends_on:
-      - zoo
     environment:
       ZK_HOSTS: zoo
-      MIN_NUMBER_OF_WORKERS: 10
-    scale: 10
+  app1:
+    ports:
+      - 5001:5000
+    extends: base_app
+    depends_on:
+      - zoo
+  app2:
+    ports:
+      - 5002:5000
+    extends: base_app
+    depends_on:
+      - zoo
+  app3:
+    ports:
+      - 5003:5000
+    extends: base_app
+    depends_on:
+      - zoo
