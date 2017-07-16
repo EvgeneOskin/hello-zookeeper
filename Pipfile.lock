@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c9db6c1a86a412d70152918664c4117482e133dff412dc53a8e568e347f94bf5"
+            "sha256": "eb53a18a6313724a28344cec64ffa329e78dbdfb6518f02f86b48ad519dec7a3"
         },
         "requires": {},
         "sources": [
@@ -12,11 +12,35 @@
         ]
     },
     "default": {
+        "click": {
+            "version": "==6.7"
+        },
+        "flask": {
+            "version": "==0.12.2"
+        },
+        "gevent": {
+            "version": "==1.2.2"
+        },
+        "greenlet": {
+            "version": "==0.4.12"
+        },
+        "itsdangerous": {
+            "version": "==0.24"
+        },
+        "jinja2": {
+            "version": "==2.9.6"
+        },
         "kazoo": {
             "version": "==2.4.0"
         },
+        "markupsafe": {
+            "version": "==1.0"
+        },
         "six": {
             "version": "==1.10.0"
+        },
+        "werkzeug": {
+            "version": "==0.12.2"
         }
     },
     "develop": {

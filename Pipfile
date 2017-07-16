@@ -1,5 +1,7 @@
 [packages]
 kazoo = ">= 2.4.0"
+gevent = "*"
+Flask = "*"
 
 [dev-packages]
 docker-compose = "*"
