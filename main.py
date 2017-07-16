@@ -1,4 +1,6 @@
 import os
+import datetime
+import uuid
 import logging
 from kazoo.client import KazooClient
 
@@ -11,20 +13,18 @@ zk.start()
 
 counter = zk.Counter("/connected")
 counter += 1
-print(f"There were ${counter.value} connections")
 
-barrier = zk.DoubleBarrier('/entrance', num_clients=3)
+min_nodes_number = int(os.getenv('MIN_NUMBER_OF_WORKERS'))
+barrier = zk.DoubleBarrier('/entrance', min_nodes_number)
 
 barrier.enter()
 
-election = zk.Election("/welcome")
+lease = zk.NonBlockingLease(
+    "/welcome", datetime.timedelta(minutes=1),
+    identifier="welcome " + uuid.uuid4().hex)
 
+if lease:
+    print(f"Welcome: There were ${counter.value} connections")
 
-def welcome():
-    workers_number = len(election.contenders())
-    print("Cluster is up and running with ${workers_number}")
-
-
-election.run(welcome)
 
 barrier.leave()

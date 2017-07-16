@@ -9,4 +9,5 @@ services:
       - zoo
     environment:
       ZK_HOSTS: zoo
+      MIN_NUMBER_OF_WORKERS: 10
     scale: 10

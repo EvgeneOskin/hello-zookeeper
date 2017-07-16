@@ -6,4 +6,4 @@ ADD Pipfile Pipfile.lock ./
 RUN pipenv install --system
 ADD main.py .
 
-CMD python main.py
+CMD python -u main.py
